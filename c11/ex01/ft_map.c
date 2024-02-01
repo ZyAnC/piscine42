@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 19:40:55 by yzheng            #+#    #+#             */
-/*   Updated: 2024/01/22 19:44:37 by yzheng           ###   ########.fr       */
+/*   Created: 2024/01/30 17:58:48 by yzheng            #+#    #+#             */
+/*   Updated: 2024/01/30 17:58:57 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	*ft_map(int *tab, int lenght, int (*f)(int))
 {
-	int	i;
+	int		i;
+	int		*res;
 
-	i = 0;
-	while (i * i <= nb && i < 46341)
-		i++;
-	i--;
-	if (i * i == nb)
-		return (i);
-	return (0);
+	res = malloc(sizeof(int) * lenght);
+	i = -1;
+	while (++i < lenght)
+		res[i] = (*f)(tab[i]);
+	return (res);
 }
-/*#include <stdio.h>
-int main(){
-  printf("%d",ft_sqrt(125));
-
-}
-*/

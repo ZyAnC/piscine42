@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 19:40:55 by yzheng            #+#    #+#             */
-/*   Updated: 2024/01/22 19:44:37 by yzheng           ###   ########.fr       */
+/*   Created: 2024/01/30 19:05:48 by yzheng            #+#    #+#             */
+/*   Updated: 2024/01/30 20:00:35 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+#include "../includes/doop.h"
+
+int	ft_atoi(char *str)
 {
-	int	i;
+	int	result;
+	int	sign;
 
-	i = 0;
-	while (i * i <= nb && i < 46341)
-		i++;
-	i--;
-	if (i * i == nb)
-		return (i);
-	return (0);
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	while (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while ((*str >= '0' && *str <= '9'))
+	{
+		result = result * 10 +(*str - '0');
+		str++;
+	}
+	return (result * sign);
 }
-/*#include <stdio.h>
-int main(){
-  printf("%d",ft_sqrt(125));
-
-}
-*/

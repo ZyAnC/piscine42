@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"*.embeddedhtml": "html",
+		"doop.h": "c",
+		"unistd.h": "c"
+	}
+}

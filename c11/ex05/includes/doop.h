@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   doop.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 19:40:55 by yzheng            #+#    #+#             */
-/*   Updated: 2024/01/22 19:44:37 by yzheng           ###   ########.fr       */
+/*   Created: 2024/01/30 19:05:09 by yzheng            #+#    #+#             */
+/*   Updated: 2024/01/30 19:05:10 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
-{
-	int	i;
+#ifndef DOOP_H
+# define DOOP_H
 
-	i = 0;
-	while (i * i <= nb && i < 46341)
-		i++;
-	i--;
-	if (i * i == nb)
-		return (i);
-	return (0);
-}
-/*#include <stdio.h>
-int main(){
-  printf("%d",ft_sqrt(125));
+# include <unistd.h>
 
-}
-*/
+void	ft_putchar(char c);
+void	ft_putnbr(int nb);
+void	ft_putstr(char *str);
+void	plus(int a, int b);
+void	sub(int a, int b);
+void	mul(int a, int b);
+void	div(int a, int b);
+void	mod(int a, int b);
+int		ft_atoi(char *str);
+
+#endif

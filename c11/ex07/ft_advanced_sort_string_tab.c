@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzheng <yzheng@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 19:40:55 by yzheng            #+#    #+#             */
-/*   Updated: 2024/01/22 19:44:37 by yzheng           ###   ########.fr       */
+/*   Created: 2024/01/30 20:54:40 by yzheng            #+#    #+#             */
+/*   Updated: 2024/01/31 20:34:14 by yzheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
-	int	i;
+	int		i;
+	int		end;
+	char	*tmp;
 
-	i = 0;
-	while (i * i <= nb && i < 46341)
-		i++;
-	i--;
-	if (i * i == nb)
-		return (i);
-	return (0);
+	end = 0;
+	while (end == 0)
+	{
+		end = 1;
+		i = -1;
+		while (tab[++i + 1])
+		{
+			if ((*cmp)(tab[i], tab[i + 1]) > 0)
+			{
+				end = 0;
+				tmp = tab[i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = tmp;
+			}
+		}
+	}
 }
-/*#include <stdio.h>
-int main(){
-  printf("%d",ft_sqrt(125));
-
-}
-*/

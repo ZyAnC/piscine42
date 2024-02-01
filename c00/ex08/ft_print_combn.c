@@ -10,44 +10,53 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-void generate_combinations(int numbers[], int start, int depth, int n) {
-    static int combination[10]; // Static array to hold current combination
-    int i;
+void	increase_and_print(char *comb, int n, int index)
+{
+	int	k;
 
-    // Base case: if combination size equals n, print it
-    if (depth == n) {
-        for (i = 0; i < n; i++) {
-            printf("%d", combination[i]);
-            if (i < n - 1) {
-                printf(", ");
-            }
-        }
-        printf("\n");
-        return;
-    }
-
-    // Generate combinations recursively
-    for (i = start; i < 10; i++) {
-        combination[depth] = numbers[i];
-        generate_combinations(numbers, i + 1, depth + 1, n);
-    }
+	while (index >= 0)
+	{
+		if (comb[index] < '9' - (n - 1 - index))
+		{
+			comb[index]++;
+			k = index + 1;
+			while (k < n)
+			{
+				comb[k] = comb[k - 1] + 1;
+				k++;
+			}
+			write(1, comb, n);
+			if (!(comb[0] == '9' - n + 1))
+			{
+				write(1, ", ", 2);
+			}
+			index = n;
+		}
+		index--;
+	}
 }
-void print_combinations(int n) {
-    int numbers[10];
-    int i;
 
-    // Initialize numbers array
-    for (i = 0; i < 10; i++) {
-        numbers[i] = i;
-    }
+void	ft_print_combn(int n)
+{
+	int		i;
+	char	comb[10];
 
-    // Recursive function to generate combinations
-    generate_combinations(numbers, 0, 0, n);
+	i = 0;
+	while (i < n)
+	{
+		comb[i] = '0' + i;
+		i++;
+	}
+	write(1, comb, n);
+	if (n < 10)
+		write(1, ", ", 2);
+	increase_and_print(comb, n, n - 1);
 }
+/*
 int main() {
-    int n = 2; // Example usage with n = 2
-    print_combinations(n);
-    return 0;
-}
+	int n = 9;
+	ft_print_combn(n);
+	return 0;
+}*/
